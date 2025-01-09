@@ -55,11 +55,11 @@ $X_{\delta_{\mathrm{e}}}=-C_{D \delta_{\mathrm{e}}} \frac{q * S}{m} $
 
 $Z_V=\frac{T_V \sin \left(\alpha*+\varphi\right)}{m V*}+\frac{\left(C_{L V}+2 C_{L*}\right) q* S}{m V*^2}$
 
-$Z_\alpha=\frac{\left(C_{D*}+C_{L \alpha}\right) q* S}{m V_*}=\frac{T* \cos \left(\alpha*+\varphi_T\right)+C_{I \alpha} q* S}{m V*}$
+$Z_\alpha=\frac{\left(C_{D*}+C_{L \alpha}\right) q* S}{m V*}=\frac{T* \cos \left(\alpha* + \varphi_T\right)+C_{I \alpha} q* S}{m V*}$
 
 $Z_{\delta_{\mathrm{e}}}=C_{L \delta_{\mathrm{e}}} \frac{q* S}{m V*}$
 
-$\bar{M}_V=\frac{\left(C_{m V}+2 C_{m*}\right) q* S c}{V* I_y}=\frac{C_{m V} q* S c}{V* I_y}$
+$\bar{M}_V = \frac{\left(C_{m V}+2 C_{m*}\right)q*Sc}{V* I_y}=\frac{C_{m V} q* S c}{V* I_y}$
 
 $\bar{M}_\alpha=C_{m \alpha} \frac{q* S c}{I_y}$
 
