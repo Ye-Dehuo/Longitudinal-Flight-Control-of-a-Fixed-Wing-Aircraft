@@ -49,7 +49,7 @@ $\frac{\mathrm{d}}{\mathrm{d} t}\left[\begin{array}{c}\Delta V \\ \Delta \alpha 
 涉及11个纵向动力学导数，分别为<br><br>
 $X_V = \frac{T_V \cos \left( \alpha_* + \varphi_T \right) }{m} - \frac{\left( C_{D V} + 2 C_{D*} \right)}{m V*}$<br><br>
 
-$X_\alpha=\frac{-T_* \sin \left(\alpha_*+\varphi_T\right)-C D \alpha q_* S}{m}$
+$X_\alpha=\frac{-T* \sin \left(\alpha*+\varphi_T\right)-C D \alpha q* S}{m}$
 
 $X_{\delta_{\mathrm{e}}}=-C_{D \delta_{\mathrm{e}}} \frac{q * S}{m} $
 
