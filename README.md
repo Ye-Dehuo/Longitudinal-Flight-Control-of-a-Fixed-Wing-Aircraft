@@ -47,7 +47,7 @@ $\frac{\mathrm{d}}{\mathrm{d} t}$<br><br>
 $\frac{\mathrm{d}}{\mathrm{d} t}\left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]=\left[\begin{array}{cccc}X_V & X_\alpha+g & 0 & -g \\ -Z_V & -Z_\alpha & 1 & 0 \\ \bar{M}_V-\bar{M}_{\dot{\alpha}} Z_V & \bar{M}_\alpha-\bar{M}_{\dot{\alpha}} Z_\alpha & \bar{M}_q+\bar{M}_{\dot{\alpha}} & 0 \\ 0 & 0 & 1 & 0\end{array}\right]     \left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]+\left[\begin{array}{c}X_{\delta_{\mathrm{e}}} \\ -Z_{\delta_{\mathrm{e}}} \\ \bar{M}_{\delta_{\mathrm{e}}}-\bar{M}_{\dot{\alpha}} Z_{\delta_{\mathrm{e}}} \\ 0 \end{array}\right]\Delta \delta_{\mathrm{e}}$
 
 涉及11个纵向动力学导数，分别为
-$X_V = \frac{T_V \cos \left( \alpha_* + \varphi_T \right) }{m} - \frac{\left( C_{D V} + 2 \right)}{2}$
+$X_V = \frac{T_V \cos \left( \alpha_* + \varphi_T \right) }{m} - \frac{\left( C_{D V} + 2 C_{D^*} \right)}{2}$
 $X_V = \frac{T_V \cos \left( \alpha_* + \varphi_T \right) }{m} - \frac{ \left( C_{D V} + 2 C_{D^*} \right) q_* S}{m V_*}$
 
 $X_\alpha=\frac{-T_* \sin \left(\alpha_*+\varphi_T\right)-C D \alpha q_* S}{m}$
