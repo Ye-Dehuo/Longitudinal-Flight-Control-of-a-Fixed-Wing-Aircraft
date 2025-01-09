@@ -53,21 +53,21 @@ $X_\alpha=\frac{-T* \sin \left(\alpha*+\varphi_T\right)-C D \alpha q* S}{m}$
 
 $X_{\delta_{\mathrm{e}}}=-C_{D \delta_{\mathrm{e}}} \frac{q * S}{m} $
 
-$Z_V=\frac{T_V \sin \left(\alpha_*+\varphi\right)}{m V_*}+\frac{\left(C_{L V}+2 C_{L^*}\right) q_* S}{m V_*^2}$
+$Z_V=\frac{T_V \sin \left(\alpha*+\varphi\right)}{m V*}+\frac{\left(C_{L V}+2 C_{L*}\right) q* S}{m V*^2}$
 
-$Z_\alpha=\frac{\left(C_{D^*}+C_{L \alpha}\right) q_* S}{m V_*}=\frac{T_* \cos \left(\alpha_*+\varphi_T\right)+C_{I \alpha} q_* S}{m V_*}$
+$Z_\alpha=\frac{\left(C_{D*}+C_{L \alpha}\right) q* S}{m V_*}=\frac{T* \cos \left(\alpha*+\varphi_T\right)+C_{I \alpha} q* S}{m V*}$
 
-$Z_{\delta_{\mathrm{e}}}=C_{L \delta_{\mathrm{e}}} \frac{q_* S}{m V_*}$
+$Z_{\delta_{\mathrm{e}}}=C_{L \delta_{\mathrm{e}}} \frac{q* S}{m V*}$
 
-$\bar{M}_V=\frac{\left(C_{m V}+2 C_{m *}\right) q_* S c}{V_* I_y}=\frac{C_{m V} q_* S c}{V_* I_y}$
+$\bar{M}_V=\frac{\left(C_{m V}+2 C_{m*}\right) q* S c}{V* I_y}=\frac{C_{m V} q* S c}{V* I_y}$
 
-$\bar{M}_\alpha=C_{m \alpha} \frac{q_* S c}{I_y}$
+$\bar{M}_\alpha=C_{m \alpha} \frac{q* S c}{I_y}$
 
-$\bar{M}_{\dot{\alpha}}=C_{m \dot{\alpha}}\left(\frac{c}{2 V_*}\right) \frac{q_* S c}{I_y} $
+$\bar{M}_{\dot{\alpha}}=C_{m \dot{\alpha}}\left(\frac{c}{2 V*}\right) \frac{q* S c}{I_y} $
 
-$\bar{M}_q=C_{m q}\left(\frac{c}{2 V_*}\right) \frac{q_* S c}{I_y}$
+$\bar{M}_q=C_{m q}\left(\frac{c}{2 V*}\right) \frac{q* S c}{I_y}$
 
-$\bar{M}_{\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q_* S c}{I_y} $
+$\bar{M}_{\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 ## 2. 模态与飞行品质分析
 
