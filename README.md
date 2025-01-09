@@ -44,7 +44,7 @@
 
 基于纵向小扰动方程的简化形式进行建模，且不计扰动运动中高度变化引起的外力和力矩的影响，并仅考虑通过升降舵对飞机进行纵向飞行控制，模型矩阵形式建立为
 
-$\frac{\mathrm{d}}{\mathrm{d t}$
+$\frac{\mathrm{d}}{\mathrm{dt}$
 
 $\frac{\mathrm{d}}{\mathrm{d} t}\left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]=\left[\begin{array}{cccc}X_V & X_\alpha+g & 0 & -g \\ -Z_V & -Z_\alpha & 1 & 0 \\ \bar{M}_V-\bar{M}_{\dot{\alpha}} Z_V & \bar{M}_\alpha-\bar{M}_{\dot{\alpha}} Z_\alpha & \bar{M}_q+\bar{M}_{\dot{\alpha}} & 0 \\ 0 & 0 & 1 & 0\end{array}\right]     \left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]+\left[\begin{array}{c}X_{\delta_{\mathrm{e}}} \\ -Z_{\delta_{\mathrm{e}}} \\ \bar{M}_{\delta_{\mathrm{e}}}-\bar{M}_{\dot{\alpha}} Z_{\delta_{\mathrm{e}}} \\ 0 \end{array}\right]\Delta \delta_{\mathrm{e}}$
 
