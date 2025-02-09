@@ -84,17 +84,18 @@ D = [0;
  
 %% 根轨迹分析
 
-% 建立开环传递函数
-num = [1 3.017 0.563];
-den = [1 5.226 14.065 2.612 0];
-K_G_star = 14.84; % 前向通道根轨迹增益
+% 建立开环传递函数（无前馈补偿）
+num = [1.0000   43.8170  155.4970  112.6800];
+den = [1.0000   16.0256   79.6081  203.0028  137.3250  0];
+K_a = 0.35; % 放大器参数
+K_G_star = K_a * 1.4836; % 前向通道根轨迹增益
 K_H_star = 1; % 反馈通道根轨迹增益
 K_star = K_G_star * K_H_star; % 根轨迹增益
 sys_ol = K_star*tf(num, den); % 开环传递函数
 
 % 绘制根轨迹
 figure('Name','Root locus')
-rlocus(sys_ol);
+rlocus(tf(num, den));
 
 %% 稳定裕度分析
 
@@ -111,16 +112,17 @@ bode(sys_ol);
 
 %% 操纵品质分析
 
-sys_cl = feedback(sys_ol, 1); % 闭环传递函数（KP = 0.5， KI = 0.1）
+sys_cl = tf([45.0270  192.6390  206.1238   58.5118], [1.0000   16.0268   80.1376  225.8221  218.1541   58.5412]); % 闭环传递函数
 
 [Wn, Zeta, Pole] = damp(sys_cl); % 闭环系统频率，阻尼比，极点
+Zero = zero(sys_cl); % 闭环系统零点
 
-T = 1 / Wn(2); % 一阶系统时间常数
 omega_n = Wn(3); % 欠阻尼系统自然频率（受控后短周期模态自然频率）
 zeta = Zeta(3); % 欠阻尼系统阻尼比（受控后短周期模态阻尼比）
 CAP = omega_n ^2 / ((V_star / g) * Z_alpha); % 操纵期望参数
 
 % 绘制C*指标图
+sim('shortPeriodSimulink');
 C_star_0 = ones(size(t));
 C_star_index = (Delta_C_star + C_star_0) / C_star_ss;
 figure('name','C*指标')
@@ -132,15 +134,15 @@ grid on;
 %% 时域特性分析
 
 % 上升时间
-tr_1 = 2.2 * T;
-tr_2 = (pi - acos(zeta))/(omega_n * sqrt(1 - zeta ^2));
+tr_1 = (pi - acos(zeta))/(omega_n * sqrt(1 - zeta ^2));
 
 % 峰值时间
-tp_2 = pi / (omega_n * sqrt(1 - zeta ^2));
+tp_1 = pi / (omega_n * sqrt(1 - zeta ^2));
 
 % 超调量
-sigma_2 = exp(-pi*zeta/sqrt(1-zeta^2)); 
+sigma_1 = exp(-pi*zeta/sqrt(1-zeta^2)); 
 
 % 调节时间
-ts_1 = 3 * T;
-ts_2 = 3.5/(zeta * omega_n);
+ts_1 = 3.5/(zeta * omega_n);
+
+% step(sys_cl);
