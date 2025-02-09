@@ -141,7 +141,7 @@ $u(t) = {K_P e(t) + K_I \int e(t) dt}$<br>
 
 舵机模型设为<br>
 
-$G_\delta(s) = \frac{-1}{5s+1}$
+$G_\delta(s) = \frac{-1}{0.1s+1}$
 
 ## 4. 控制系统建立与分析
 
