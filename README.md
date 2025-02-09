@@ -133,9 +133,9 @@ $C^* = n_n+\frac{V_{\mathrm{co}}}{g} q$<br>
 
 控制律针对 $\Delta C^*$ 进行设计，定义跟踪误差<br>
 
- $e(t) = \Delta C^{**} - \Delta C^*$<br>
+$e(t) = \Delta C^{**} - \Delta C^*$<br>
 
-其中，$\Delta C^{**}$为 $\Delta C^*$ 的期望值
+其中， $\Delta C^{**}$ 为 $\Delta C^*$ 的期望值<br>
 
 基于 PI 控制方法设计 $C^*$ 控制律如下<br>
 
