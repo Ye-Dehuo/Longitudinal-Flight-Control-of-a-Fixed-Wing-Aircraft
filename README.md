@@ -296,25 +296,25 @@ $Z_3 (-0.46, 0)$<br>
 
 + 上升时间
 
-  欠阻尼系统上升时间 $t_{r}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
+  欠阻尼系统上升时间 $t_{r1}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
 
   系统实际上升时间 $t_r = 0.31 \ s$<br>
 
 + 峰值时间
 
-  欠阻尼系统峰值时间 $t_{p2} = 1.09 \ s$<br>
+  欠阻尼系统峰值时间 $t_{p} = 1.09 \ s$<br>
 
   系统实际峰值时间 $t_p = 0.74 \ s$<br>
 
 + 超调量
 
-  欠阻尼系统超调量 $\sigma_2 \%=\mathrm{e}^{-\pi \zeta / \sqrt{1-\zeta^2}} \times 100 \% = 8.7\%$<br>
+  欠阻尼系统超调量 $\sigma_1 \\% = \mathrm{e}^{-\pi \zeta / \sqrt{1-\zeta^2}} \times 100 \\% = 8.7 \\%$<br>
 
-  系统实际超调量 $\sigma \%= 18 \%$<br>
+  系统实际超调量 $\sigma \\%= 18 \\%$<br>
 
 + 调节时间
 
-  欠阻尼系统调节时间 $t_{s2} = \frac{3.5}{\zeta \omega_n} = 1.55 \ s$<br>
+  欠阻尼系统调节时间 $t_{s1} = \frac{3.5}{\zeta \omega_n} = 1.55 \ s$<br>
 
   系统实际调节时间 $t_s = 2.45 \ s$<br>
 
