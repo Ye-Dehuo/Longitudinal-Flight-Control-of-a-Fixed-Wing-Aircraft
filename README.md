@@ -135,6 +135,8 @@ $C^* = n_n+\frac{V_{\mathrm{co}}}{g} q$<br>
 
  $e(t) = \Delta C^{**} - \Delta C^*$<br>
 
+其中，$ \Delta C^{**}$为 $\Delta C^*$ 的期望值
+
 基于 PI 控制方法设计 $C^*$ 控制律如下<br>
 
 $u(t) = {K_P e(t) + K_I \int e(t) dt}$<br>
