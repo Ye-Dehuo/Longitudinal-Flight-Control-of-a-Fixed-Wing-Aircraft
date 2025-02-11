@@ -224,9 +224,9 @@ $K_a$ 为控制放大器增益<br>
 
 Nyquist 图如下所示<br>
 
-![alt](/img/nyguist.jpg)
+![alt](/img/nyquist.jpg)
 
-![alt](/img/nyguist2.jpg)
+![alt](/img/nyquist2.jpg)
 
 Bode 图如下所示<br>
 
