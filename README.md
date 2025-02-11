@@ -178,8 +178,6 @@ $\Delta C^* = \Delta n_n +\frac{V_{\mathrm{co}}}{g} \Delta q$<br>
 
   指令前馈补偿器中，放大器增益为 $K_{ff}$。前馈补偿器可通过增加相位来调节系统中的一个零点，同时不会改变系统的极点<br>
 
-  控制放大器增益为 $K_a$<br>
-
 在 Simulink 中建立如下控制系统<br>
 
 ![alt](/img/shortPeriodSimulink.jpg)
