@@ -226,6 +226,8 @@ Nyquist 图如下所示<br>
 
 ![alt](/img/nyguist.jpg)
 
+![alt](/img/nyguist2.jpg)
+
 Bode 图如下所示<br>
 
 ![alt](/img/bode.jpg)
