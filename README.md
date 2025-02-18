@@ -101,7 +101,7 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 阻尼比 $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
 
-倍幅时 $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
+半衰期 $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
 
 ### 飞行品质分析
 
@@ -118,12 +118,6 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
 长周期阻尼比满足要求 
-
-(2) 倍幅时<br>
-
- $t_2 = 40.6338 < 55$<br>
-
-倍幅时不满足要求
 
 ## 3. $C^*$控制律设计
 
