@@ -286,7 +286,7 @@ $Z_2 (-1, 0)$<br>
 
 $Z_3 (-0.46, 0)$<br>
 
-The pole $P_1$ and zero $Z_3$ , as well as the pole $P_2$ and zero $Z_2$, are located too close to each other near the imaginary axis, which leads to mutual attenuation of their effects on the system response. The distance of pole $P_5​$ from the imaginary axis is relatively greater compared to $P_3 and P_4​$. Therefore, the system response is primarily determined by the conjugate pole pair $P_3, P_4​$ and the zero $Z_1​$<br>
+The pole $P_1$ and zero $Z_3$ , as well as the pole $P_2$ and zero $Z_2$, are located too close to each other near the imaginary axis, which leads to mutual attenuation of their effects on the system response. The distance of pole $P_5​$ from the imaginary axis is relatively greater compared to $P_3, P_4​$. Therefore, the system response is primarily determined by the conjugate pole pair $P_3, P_4​$ and the zero $Z_1​$<br>
 
 The complex conjugate poles $P_3， P_4$ represent an underdamped system with natural frequency $w_n = 3.67$ and damping ratio $\zeta = 0.61$<br>
 
