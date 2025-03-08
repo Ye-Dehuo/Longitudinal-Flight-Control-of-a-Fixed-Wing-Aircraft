@@ -1,4 +1,4 @@
-# 固定翼飞机纵向飞行控制
+# Longitudinal Flight Control of a Fixed-Wing Aircraft
 ## 概述
 + 飞机模态和飞行品质分析主要基于全周期动力学模型，源码可见 `allPeriod.m`<br><br>
 + 飞行控制、根轨迹、稳定裕度、操纵品质与时域特性分析主要基于短周期模型，源码可见 `shortPeriod.m`，Simulink 模型可见 `shortPeriodSimulink.slx`
