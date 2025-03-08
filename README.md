@@ -8,43 +8,43 @@
 
 #### 1. Typical Fixed-Wing Civil Aircraft Parameters
 
-Aircraft weight: $W = 12224 \ N​$<br>
++ Aircraft weight: $W = 12224 \ N​$<br>
 
-Moments of inertia: $I_x=1420.9 \mathrm{~kg} \cdot \mathrm{~m}^2, I_y=4067.5 \mathrm{~kg} \cdot \mathrm{~m}^2, I_z=4786.0 \mathrm{~kg} \cdot \mathrm{~m}^2, I_{x z}=0 \mathrm{~kg} \cdot \mathrm{~m}^2$<br>
++ Moments of inertia: $I_x=1420.9 \mathrm{~kg} \cdot \mathrm{~m}^2, I_y=4067.5 \mathrm{~kg} \cdot \mathrm{~m}^2, I_z=4786.0 \mathrm{~kg} \cdot \mathrm{~m}^2, I_{x z}=0 \mathrm{~kg} \cdot \mathrm{~m}^2$<br>
 
-Wing area: $S=17.1 \mathrm{~m}^2$<br>
++ Wing area: $S=17.1 \mathrm{~m}^2$<br>
 
-Mean aerodynamic chord: $c=1.74 \mathrm{~m}$<br>
++ Mean aerodynamic chord: $c=1.74 \mathrm{~m}$<br>
 
-Wingspan: $b=10.18 \mathrm{~m}$
++ Wingspan: $b=10.18 \mathrm{~m}$
 
 #### 2. Basic Flight Parameters
 
-Aircraft flying at sea level at $M a=0.158$, $C_{L *}=0.41, C_{D *}=0.05$<br>
++ Aircraft flying at sea level at $M a=0.158$, $C_{L *}=0.41, C_{D *}=0.05$<br>
 
-Angle of attack derivatives: $C_{L \alpha}=4.44, C_{D \alpha}=0.33, C_{m \alpha}=-0.683​$<br>
++ Angle of attack derivatives: $C_{L \alpha}=4.44, C_{D \alpha}=0.33, C_{m \alpha}=-0.683​$<br>
 
-Velocity derivatives: $C_{L V}=0.0, C_{D V}=0.0, C_{m V}=0.0$<br>
++ Velocity derivatives: $C_{L V}=0.0, C_{D V}=0.0, C_{m V}=0.0$<br>
 
-Dynamic derivatives: $C_{L \dot{\alpha}}=C_{z \dot{\alpha}}=0.0, C_{m \dot{\alpha}}=-4.36, C_{L q}=-C_{z q}=3.80, C_{m q}=-9.96$<br>
++ Dynamic derivatives: $C_{L \dot{\alpha}}=C_{z \dot{\alpha}}=0.0, C_{m \dot{\alpha}}=-4.36, C_{L q}=-C_{z q}=3.80, C_{m q}=-9.96$<br>
 
-Control derivatives: $C_{L \delta_e}=-C_{z \delta_e}=0.355, C_{D \delta_e}=0.0, C_{m \delta_e}=-0.923$<br>
++ Control derivatives: $C_{L \delta_e}=-C_{z \delta_e}=0.355, C_{D \delta_e}=0.0, C_{m \delta_e}=-0.923$<br>
 
-Assuming no variation in thrust with velocity, then $T_V = 0$<br>
++ Assuming no variation in thrust with velocity, then $T_V = 0$<br>
 
-Gravity acceleration: $g = 9.81 \ m/s^2$<br>
++ Gravity acceleration: $g = 9.81 \ m/s^2$<br>
 
-Atmospheric density: $\rho = 1.225 \ kg/m^3$
++ Atmospheric density: $\rho = 1.225 \ kg/m^3$
 
 #### 3. Additional Parameters
 
-Aircraft mass: $m = \frac{W}{g}$<br>
++ Aircraft mass: $m = \frac{W}{g}$<br>
 
-Reference velocity: $V_* = Ma \times 340 $<br>
++ Reference velocity: $V_* = Ma \times 340 $<br>
 
-Reference dynamic pressure: $q_* = \frac{\rho {V_*}^2}{2}$<br>
++ Reference dynamic pressure: $q_* = \frac{\rho {V_*}^2}{2}$<br>
 
-Assuming zero wind speed, level straight-line flight with no sideslip $\gamma_* = 0$ ，maintaining constant altitude
++ Assuming zero wind speed, level straight-line flight with no sideslip $\gamma_* = 0$ ，maintaining constant altitude
 
 ### Model Formulation
 
@@ -83,29 +83,29 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 #### 1. Short-Period Mode (Approximate Model)
 
-Natural frequency: $\omega_{n, \ sp }=\sqrt{-\left(\bar{M}_ a+\bar{M}_ q Z_\alpha\right)} = 3.6138$<br>
++ Natural frequency: $\omega_{n, \ sp }=\sqrt{-\left(\bar{M}_ a+\bar{M}_ q Z_\alpha\right)} = 3.6138$<br>
 
-Damping ratio: $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
++ Damping ratio: $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
 
-Half decay time: $t_{1 / 2}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
++ Half decay time: $t_{1 / 2}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
 
-Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
++ Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
 
-Damped natural frequency: $\omega_{sp} = \omega_{n, \ sp}\sqrt{1-{\xi^2_{sp}}} = 2.597$<br>
++ Damped natural frequency: $\omega_{sp} = \omega_{n, \ sp}\sqrt{1-{\xi^2_{sp}}} = 2.597$<br>
 
-Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
++ Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
 
 #### 2. Phugoid Mode
 
-Damped natural frequency: $\omega_{p} = Im(\lambda) = 0.213$<br>
++ Damped natural frequency: $\omega_{p} = Im(\lambda) = 0.213$<br>
 
-Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
++ Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
 
-Natural frequency: $\omega_{\mathrm{n} , \ \mathrm{p}}= \sqrt{\eta^2_p + \omega_p^2} = 0.2137$<br>
++ Natural frequency: $\omega_{\mathrm{n} , \ \mathrm{p}}= \sqrt{\eta^2_p + \omega_p^2} = 0.2137$<br>
 
-Damping ratio: $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
++ Damping ratio: $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
 
-Half decay time: $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
++ Half decay time: $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
 
 ### Flight Quality Analysis
 
@@ -127,15 +127,15 @@ The damping ratio for the long-period mode satisfies the requirements
 
 $C^* = n_n+\frac{V_{\mathrm{co}}}{g} q$<br>
 
-Here, $V_{co}$ represents the crossover speed, generally ranging from $120 \sim 132 m/s$，selected here as $V_{co} = 122 m/s$<br>
+Here, $V_{co}$ represents the crossover speed, generally ranging from $120 \sim 132 m/s$，here selected as $V_{co} = 122 m/s$<br>
 
-The control law is designed for the error in $\Delta C^*$ <br>
+The control law is designed for the error in $\Delta C^*$, the error is represented as: <br>
 
 $e(t) = \Delta C^{**} - \Delta C^*$<br>
 
 where $\Delta C^{**}$  is the desired value of $\Delta C^*$ <br>
 
-The $C^*$  control law is formulated using a PI control strategy as follows:<br>
+PI control will be applied to the design of the $C^*$ control law, in a form similar to the following:<br>
 
 $u(t) = {K_P e(t) + K_I \int e(t) dt}$<br>
 
@@ -143,9 +143,9 @@ The actuator model is defined as:<br>
 
 $G_\delta(s) = \frac{-1}{0.1s+1}$
 
-## 4. Control System Development and Analysis
+## 4. Control System Design and Analysis
 
-### Control System Setup
+### Control System Design
 
 The control of the $C^*$ metric typically needs to be accomplished within a short period, hence the dynamics model is simplified to the short-period model, focusing on elevator control for aircraft:<br>
 ```math
@@ -164,17 +164,17 @@ The control system consists of a Stability Augmentation System (SAS) and a Contr
 
 + S.A.S<br>
 
-  Normal load feedback with an amplifier gain of $K_{n1}$ <br>
+  + Normal load feedback with an amplifier gain of $K_{n1}$ <br>
 
-  Pitch damper with an amplifier gain of $K_{q1}$ and a washout network time constant of $1$<br>
+  + Pitch damper with an amplifier gain of $K_{q1}$ and a washout network time constant of $1$<br>
 
 + C.A.S<br>
 
-  PI controller with a proportional coefficient $K_P$ and an integral coefficien $K_I$<br>
+  + PI controller with a proportional coefficient $K_P$ and an integral coefficient $K_I$<br>
 
-  Control amplifier gain $K_a$<br>
+  + Control amplifier gain $K_a$<br>
 
-  Command feedforward compensator with an amplifier gain $K_{ff}$, which adjusts a zero in the system without altering the poles<br>
+  + Command feedforward compensator with an amplifier gain $K_{ff}$, which adjusts a zero in the system without altering the poles<br>
 
 Establish the following control system in Simulink:<br>
 
@@ -190,7 +190,7 @@ The output $\Delta C^*$ of the control system is shown below:<br>
 
 ### Root Locus Analysis
 
-Ignoring the feedforward compensator temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
+Ignoring the feedforward compensator $K_{ff}$ temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
 
 The open-loop transfer function of the system is:<br>
 
