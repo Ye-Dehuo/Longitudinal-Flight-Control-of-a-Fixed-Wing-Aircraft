@@ -1,55 +1,59 @@
 # Longitudinal Flight Control of a Fixed-Wing Aircraft
-## 概述
-+ 飞机模态和飞行品质分析主要基于全周期动力学模型，源码可见 `allPeriod.m`<br><br>
-+ 飞行控制、根轨迹、稳定裕度、操纵品质与时域特性分析主要基于短周期模型，源码可见 `shortPeriod.m`，Simulink 模型可见 `shortPeriodSimulink.slx`
-## 1. 建模
+## Overview
++ Aircraft mode and flight quality analysis are primarily based on the full-period dynamic model, with the source code available in `allPeriod.m` <br><br>
++ Flight control, root locus, stability margins, handling quality, and time-domain characteristics analysis are mainly based on the short-period model, with the source code available in `shortPeriod.m` and the Simulink model in `shortPeriodSimulink.slx`
+## 1. Modeling
 
-### 参数确定
+### Parameter Determination
 
-#### 1. 典型固定翼民机参数
+#### 1. Typical Fixed-Wing Civil Aircraft Parameters
 
-飞行器重量 $W = 12224 \ N​$<br>
+Aircraft weight: $W = 12224 \ N​$<br>
 
-惯矩 $I_x=1420.9 \mathrm{~kg} \cdot \mathrm{~m}^2, I_y=4067.5 \mathrm{~kg} \cdot \mathrm{~m}^2, I_z=4786.0 \mathrm{~kg} \cdot \mathrm{~m}^2, I_{x z}=0 \mathrm{~kg} \cdot \mathrm{~m}^2$<br>
+Moments of inertia: $I_x=1420.9 \mathrm{~kg} \cdot \mathrm{~m}^2, I_y=4067.5 \mathrm{~kg} \cdot \mathrm{~m}^2, I_z=4786.0 \mathrm{~kg} \cdot \mathrm{~m}^2, I_{x z}=0 \mathrm{~kg} \cdot \mathrm{~m}^2$<br>
 
-机翼面积 $S=17.1 \mathrm{~m}^2$, 平均气动弦长 $c=1.74 \mathrm{~m}$, 展长 $b=10.18 \mathrm{~m}$
+Wing area: $S=17.1 \mathrm{~m}^2$<br>
 
-#### 2. 基础飞行参数
+Mean aerodynamic chord: $c=1.74 \mathrm{~m}$<br>
 
-飞机在海平面以 $M a=0.158$ 飞行, $C_{L *}=0.41, C_{D *}=0.05$<br>
+Wingspan: $b=10.18 \mathrm{~m}$
 
-迎角导数 $C_{L \alpha}=4.44, C_{D \alpha}=0.33, C_{m \alpha}=-0.683​$<br>
+#### 2. Basic Flight Parameters
 
-速度导数 $C_{L V}=0.0, C_{D V}=0.0, C_{m V}=0.0$<br>
+Aircraft flying at sea level at $M a=0.158$, $C_{L *}=0.41, C_{D *}=0.05$<br>
 
-动导数 $C_{L \dot{\alpha}}=C_{z \dot{\alpha}}=0.0, C_{m \dot{\alpha}}=-4.36, C_{L q}=-C_{z q}=3.80, C_{m q}=-9.96$<br>
+Angle of attack derivatives: $C_{L \alpha}=4.44, C_{D \alpha}=0.33, C_{m \alpha}=-0.683​$<br>
 
-操纵导数 $C_{L \delta_e}=-C_{z \delta_e}=0.355, C_{D \delta_e}=0.0, C_{m \delta_e}=-0.923$<br>
+Velocity derivatives: $C_{L V}=0.0, C_{D V}=0.0, C_{m V}=0.0$<br>
 
-不计推力随速度的变化，则 $T_V = 0$<br>
+Dynamic derivatives: $C_{L \dot{\alpha}}=C_{z \dot{\alpha}}=0.0, C_{m \dot{\alpha}}=-4.36, C_{L q}=-C_{z q}=3.80, C_{m q}=-9.96$<br>
 
-重力加速度 $g = 9.81 \ m/s^2$<br>
+Control derivatives: $C_{L \delta_e}=-C_{z \delta_e}=0.355, C_{D \delta_e}=0.0, C_{m \delta_e}=-0.923$<br>
 
-大气密度 $\rho = 1.225 \ kg/m^3$
+Assuming no variation in thrust with velocity, then $T_V = 0$<br>
 
-#### 3. 其它参数
+Gravity acceleration: $g = 9.81 \ m/s^2$<br>
 
-质量 $m = \frac{W}{g}$<br>
+Atmospheric density: $\rho = 1.225 \ kg/m^3$
 
-基准速度 $V_* = Ma \times 340 $<br>
+#### 3. Additional Parameters
 
-基准动压 $q_* = \frac{\rho {V_*}^2}{2}$<br>
+Aircraft mass: $m = \frac{W}{g}$<br>
 
-假设风速为0，飞机无侧滑水平直线飞行 $\gamma_* = 0$ ，且始终保持在同一高度<br>
+Reference velocity: $V_* = Ma \times 340 $<br>
 
-### 模型建立
+Reference dynamic pressure: $q_* = \frac{\rho {V_*}^2}{2}$<br>
 
-基于纵向小扰动方程的简化形式进行建模，且不计扰动运动中高度变化引起的外力和力矩的影响，并仅考虑通过升降舵对飞机进行纵向飞行控制，模型矩阵形式建立为<br>
+Assuming zero wind speed, level straight-line flight with no sideslip $\gamma_* = 0$ ，maintaining constant altitude
+
+### Model Formulation
+
+The modeling is based on the simplified form of the longitudinal perturbation equations, neglecting the influence of altitude variations in perturbation motion and considering only the elevator control for longitudinal flight control. The system is represented in matrix form as:<br>
 ```math
 \frac{\mathrm{d}}{\mathrm{d} t}\left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]=\left[\begin{array}{cccc}X_V & X_\alpha+g & 0 & -g \\ -Z_V & -Z_\alpha & 1 & 0 \\ \bar{M}_ V-\bar{M}_ {\dot{\alpha}} Z_V & \bar{M}_ \alpha-\bar{M}_ {\dot{\alpha}} Z_\alpha & \bar{M}_ q+\bar{M}_ {\dot{\alpha}} & 0 \\ 0 & 0 & 1 & 0\end{array}\right]     \left[\begin{array}{c}\Delta V \\ \Delta \alpha \\ \Delta q \\ \Delta \theta\end{array}\right]+\left[\begin{array}{c}X_{\delta_{\mathrm{e}}} \\ -Z_{\delta_{\mathrm{e}}} \\ \bar{M}_ {\delta_{\mathrm{e}}}-\bar{M}_ {\dot{\alpha}} Z_{\delta_{\mathrm{e}}} \\ 0 \end{array}\right]\Delta \delta_{\mathrm{e}}
 ```
 <br>
-涉及11个纵向动力学导数，分别为<br><br>
+This formulation involves 11 longitudinal aerodynamic derivatives, given by:<br><br>
 
 $X_V = \frac{T_V \cos \left( \alpha_* + \varphi_T \right) }{m} - \frac{\left( C_{D V} + 2 C_{D*} \right)}{m V*}$<br>
 
@@ -73,138 +77,138 @@ $\bar{M}_ q=C_{m q}\left(\frac{c}{2 V*}\right) \frac{q* S c}{I_y}$<br>
 
 $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
-## 2. 模态与飞行品质分析
+## 2. Modal and Flight Quality Analysis
 
-### 模态分析
+### Modal Analysis
 
-#### 1. 短周期模态（取近似模型）
+#### 1. Short-Period Mode (Approximate Model)
 
-自然频率 $\omega_{n, \ sp }=\sqrt{-\left(\bar{M}_ a+\bar{M}_ q Z_\alpha\right)} = 3.6138$<br>
+Natural frequency: $\omega_{n, \ sp }=\sqrt{-\left(\bar{M}_ a+\bar{M}_ q Z_\alpha\right)} = 3.6138$<br>
 
-阻尼比 $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
+Damping ratio: $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
 
-半衰期 $t_{1 / 2}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
+Half decay time: $t_{1 / 2}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
 
-半衰期内振荡次数  $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
+Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
 
-阻尼振荡频率 $\omega_{sp} = \omega_{n, \ sp}\sqrt{1-{\xi^2_{sp}}} = 2.597$<br>
+Damped natural frequency: $\omega_{sp} = \omega_{n, \ sp}\sqrt{1-{\xi^2_{sp}}} = 2.597$<br>
 
-周期 $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
+Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
 
-#### 2. 长周期模态
+#### 2. Phugoid Mode
 
-阻尼振荡频率 $\omega_{p} = Im(\lambda) = 0.213$<br>
+Damped natural frequency: $\omega_{p} = Im(\lambda) = 0.213$<br>
 
-周期 $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
+Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
 
-自然频率 $\omega_{\mathrm{n} , \ \mathrm{p}}= \sqrt{\eta^2_p + \omega_p^2} = 0.2137$<br>
+Natural frequency: $\omega_{\mathrm{n} , \ \mathrm{p}}= \sqrt{\eta^2_p + \omega_p^2} = 0.2137$<br>
 
-阻尼比 $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
+Damping ratio: $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
 
-半衰期 $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
+Half decay time: $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
 
-### 飞行品质分析
+### Flight Quality Analysis
 
-#### 1. 短周期模态
+#### 1. Short-Period Mode
 
  $0.35 < \zeta_{\mathrm{sp}} = 0.6954 < 1.3$<br>
 
-短周期阻尼比满足要求
+The damping ratio for the short-period mode meets the requirements
 
-#### 2. 长周期模态
+#### 2. Phugoid Mode
 
-(1) 阻尼比<br>
+(1) Damping Ratio:<br>
 
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
-长周期阻尼比满足要求 
+The damping ratio for the long-period mode satisfies the requirements 
 
-## 3. $C^*$控制律设计
+## 3. $C^*$ Control Law Design
 
 $C^* = n_n+\frac{V_{\mathrm{co}}}{g} q$<br>
 
-其中， $V_{co}$ 为穿越速度，取值范围一般为 $120 \sim 132 m/s$，此处取 $V_{co} = 122 m/s$<br>
+Here, $V_{co}$ represents the crossover speed, generally ranging from $120 \sim 132 m/s$，selected here as $V_{co} = 122 m/s$<br>
 
-控制律针对 $\Delta C^*$ 进行设计，定义跟踪误差<br>
+The control law is designed for the error in $\Delta C^*$ <br>
 
 $e(t) = \Delta C^{**} - \Delta C^*$<br>
 
-其中， $\Delta C^{**}$ 为 $\Delta C^*$ 的期望值<br>
+where $\Delta C^{**}$  is the desired value of $\Delta C^*$ <br>
 
-基于 PI 控制方法设计 $C^*$ 控制律如下<br>
+The $C^*$  control law is formulated using a PI control strategy as follows:<br>
 
 $u(t) = {K_P e(t) + K_I \int e(t) dt}$<br>
 
-舵机模型设为<br>
+The actuator model is defined as:<br>
 
 $G_\delta(s) = \frac{-1}{0.1s+1}$
 
-## 4. 控制系统建立与分析
+## 4. Control System Development and Analysis
 
-### 控制系统建立
+### Control System Setup
 
-对于 $C^*$ 指标的控制通常要求在较短时间内完成，于是将动力学模型简化为短周期模型，并仅考虑通过升降舵对飞机进行控制<br>
+The control of the $C^*$ metric typically needs to be accomplished within a short period, hence the dynamics model is simplified to the short-period model, focusing on elevator control for aircraft:<br>
 ```math
 \left[\begin{array}{c}\Delta \dot{\alpha} \\ \Delta \dot{q}\end{array}\right]=\left[\begin{array}{cc}-Z_\alpha & 1 \\ \bar{M}_\alpha-\bar{M}_{\dot{\alpha}} Z_\alpha & \bar{M}_q+ \bar{M}_{\dot{\alpha}}\end{array}\right]\left[\begin{array}{c}\Delta \alpha \\ \Delta q\end{array}\right] + \left[\begin{array}{c}-Z_{\delta_e} \\ \bar{M}_{\delta_e}-\bar{M}_{\dot{\alpha}} Z_{\delta_e}\end{array}\right] \Delta \delta_e 
 ```
 <br>
-法向过载改变量与迎角改变量间存在如下关系<br><br>
+The relationship between the change in normal load and the change in angle of attack is:<br><br>
 
 $\Delta n_n = \frac{C_{L\alpha} q S \Delta \alpha}{W}$<br>
 
-闭环系统输出为<br>
+The output of the closed-loop system is:<br>
 
 $\Delta C^* = \Delta n_n +\frac{V_{\mathrm{co}}}{g} \Delta q$<br>
 
-控制系统由增稳系统 S.A.S 与控制增强系统 C.A.S构成
+The control system consists of a Stability Augmentation System (SAS) and a Control Augmentation System (CAS):
 
 + S.A.S<br>
 
-  法向过载反馈中，放大器增益为 $K_{n1}$ <br>
+  Normal load feedback with an amplifier gain of $K_{n1}$ <br>
 
-  俯仰阻尼器中，放大器增益为 $K_{q1}$，清洗网络时间常数设为 $1$<br>
+  Pitch damper with an amplifier gain of $K_{q1}$ and a washout network time constant of $1$<br>
 
 + C.A.S<br>
 
-  PI控制器中，比例系数为 $K_P$ ，积分系数为 $K_I$<br>
+  PI controller with a proportional coefficient $K_P$ and an integral coefficien $K_I$<br>
 
-  控制放大器增益为 $K_a$<br>
+  Control amplifier gain $K_a$<br>
 
-  指令前馈补偿器中，放大器增益为 $K_{ff}$。前馈补偿器可通过增加相位来调节系统中的一个零点，同时不会改变系统的极点<br>
+  Command feedforward compensator with an amplifier gain $K_{ff}$, which adjusts a zero in the system without altering the poles<br>
 
-在 Simulink 中建立如下控制系统<br>
+Establish the following control system in Simulink:<br>
 
 ![alt](/img/shortPeriodSimulink.jpg)
 
-控制系统输出 $\Delta C^*$ 如下图所示<br>
+The output $\Delta C^*$ of the control system is shown below:<br>
 
 ![alt](/img/Delta_C_star.jpg)
 
- $\Delta q$ 如下图所示
+ $\Delta q$ is depicted in the following graph:
 
 ![alt](/img/Delta_q.jpg)
 
-### 根轨迹分析
+### Root Locus Analysis
 
-暂时忽略前馈补偿器，取  $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
+Ignoring the feedforward compensator temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
 
-由分析可得，系统开环传递函数为<br>
+The open-loop transfer function of the system is:<br>
 
 $G_{ol}(s) = K^* \frac{s^3 + 43.817s^2 + 155.497s + 112.68}{s^5 + 16.0256s^4 + 79.6081s^3 + 203.0028s^2 + 137.325s}$<br>
 
-$K^* = K_G^*  K_H^* = 1.4836 K_a K_H^* = 1.4836 K_a$<br>
+where $K^* = K_G^*  K_H^* = 1.4836 K_a K_H^* = 1.4836 K_a$<br>
 
-其中<br>
+Among them,<br>
 
-$K^*$ 为开环根轨迹增益 <br>
+$K^*$ is the open-loop root locus gain <br>
 
-$K_G^*$ 为前向通路根轨迹增益<br>
+$K_G^*$ is the forward path root locus gain<br>
 
-$K_H^*$ 为反馈通路根轨迹增益<br>
+$K_H^*$ is the feedback path root locus gain<br>
 
-$K_a$ 为控制放大器增益<br>
+$K_a$ is the control amplifier gain<br>
 
-可绘制出系统根轨迹图如下<br>
+Root locus plots are as follows:<br>
 
 ![alt](/img/rlocus1.jpg)
 
@@ -212,57 +216,57 @@ $K_a$ 为控制放大器增益<br>
 
 ![alt](/img/rlocus3.jpg)
 
-由根轨迹图可知，当 $0 < K^* < 12.5$时，根轨迹均位于左半 $s$ 平面，此时系统稳定
+From the root locus diagram, it can be seen that when $0 < K^* < 12.5$, the root locus remains in the left half of the $s$-plane, indicating that the system is stable
 
-### 稳定裕度分析
+### Stability Margin Analysis
 
-Nyquist 图如下所示<br>
+Nyquist plots are shown below:<br>
 
 ![alt](/img/nyquist.jpg)
 
 ![alt](/img/nyquist2.jpg)
 
-Bode 图如下所示<br>
+Bode plots are shown below:<br>
 
 ![alt](/img/bode.jpg)
 
-幅值裕度为 $24.8 dB$<br>
+The gain margin is $24.8 dB$, and the phase margin is $87.5°$
 
-相角裕度为 $87.5°$
+### Handling Quality Analysis
 
-### 操纵品质分析
+(1) $CAP$ Index
 
-(1) $CAP$ 指标
-
-取 $K_a = 0.35, K_{ff} = 0.03$，，可求得此时闭环传递函数为<br>
+With $K_a = 0.35, K_{ff} = 0.03$, the closed-loop transfer function is determined to be:<br>
 
 $G_{cl}(s) = \frac{45.03s^3 + 192.6s^2 + 206.1s + 58.51}{s^5 + 16.03s^4 + 80.14s^3 + 225.8s^2 + 218.2s + 58.54}$<br>
 
-并得到此时的短周期模态自然频率 $\omega_{n, sp} = 3.67$，短周期模态阻尼比 $\zeta_{n, sp} = 0.61$<br>
+This results in a natural frequency for the short-period mode of $\omega_{n, sp} = 3.67$ and a damping ratio of $\zeta_{n, sp} = 0.61$<br>
 
-操纵期望参数 $CAP = \frac{\omega_{\mathrm{n}, \mathrm{sp}}^2}{(V \star / g) Z_\alpha} = 1.21$<br>
+The Control Anticipation Parameter ($CAP$) is calculated as:<br>
 
-该项目主要对飞机巡航阶段的控制进行研究，因此飞机处于 B 种飞行阶段，相应的短周期操纵品质要求如下图所示<br>
+$CAP = \frac{\omega_{\mathrm{n}, \mathrm{sp}}^2}{(V \star / g) Z_\alpha} = 1.21$<br>
+
+This study primarily focuses on the control during the cruising phase of the aircraft, which is categorized under Type B flight phase. The short-period handling quality requirements for this phase are illustrated in the figure below:<br>
 
 ![alt](/img/CAP_CATB.jpg)
 
-从图中可以看出，该飞机在巡航阶段的操纵期望参数满足 1 级飞行品质要求<br>
+It can be observed that the aircraft meets Level 1 flight quality requirements during the cruising phase<br>
 
-(2) $C^*$ 指标
+(2) $C^*$ Index
 
-输入为 $1g$ 时 $C^*$ 指标如下图所示，可以看出该飞机 $C^ *$ 指标满足包线约束<br>
+When the input is $1g$, the $C^*$ index is depicted in the following figure, demonstrating that the aircraft meets the envelope constraints:<br>
 
 ![alt](/img/C_star_index.jpg)
 
-### 时域特性分析
+### Time-Domain Characteristics Analysis
 
-（1）动态性能指标<br>
+（1）Dynamic Performance Indicators<br>
 
-闭环极点如下图所示<br>
+The closed-loop poles are shown in the following figure:<br>
 
 ![alt](/img/closed_loop_poles_zeros.jpg)
 
-系统共有 5个闭环极点，包括 3 个实数极点与 1 对共轭极点<br>
+The closed-loop system has five poles, including three real poles and one pair of complex conjugate poles:<br>
 
 $P_1 (-0.4405, 0)$<br>
 
@@ -274,7 +278,7 @@ $P_4 ( -2.254, -2.893)$<br>
 
 $P_5 (-10.1, 0)$<br>
 
-闭环零点共有 3 个<br>
+There are three zeros in the system:<br>
 
 $Z_1 (-2.82, 0)$<br>
 
@@ -282,19 +286,19 @@ $Z_2 (-1, 0)$<br>
 
 $Z_3 (-0.46, 0)$<br>
 
-位于虚轴附近的极点 $P_1$ 与零点 $Z_3$ ，极点 $P_2$ 与 零点 $Z_2$ 分别距离过近，对于系统响应的影响会互相削弱。极点 $P_5​$ 距虚轴的距离较 $P_3, P_4​$ 而言相对较远。因此，系统响应主要由共轭极点对 $P_3, P_4​$ 与零点 $Z_1​$ 确定<br>
+The pole $P_1$ and zero $Z_3$ , as well as the pole $P_2$ and zero $Z_2$, are located too close to each other near the imaginary axis, which leads to mutual attenuation of their effects on the system response. The distance of pole $P_5​$ from the imaginary axis is relatively greater compared to $P_3 and P_4​$. Therefore, the system response is primarily determined by the conjugate pole pair $P_3, P_4​$ and the zero $Z_1​$<br>
 
-共轭极点 $P_3， P_4$ 对应欠阻尼系统，自然频率 $w_n = 3.67$ ，阻尼比 $\zeta = 0.61$<br>
+The complex conjugate poles $P_3， P_4$ represent an underdamped system with natural frequency $w_n = 3.67$ and damping ratio $\zeta = 0.61$<br>
 
-闭环零点 $Z_1$ 对系统动态性能的影响主要为减小峰值时间，使系统响应速度加快， 但会使超调量增大<br>
+The zero $Z_1$ mainly reduces peak time, accelerating system response, but increases overshoot<br>
 
-在输入为阶跃信号下<br>
+Response to Step Input:<br>
 
-+ 上升时间
++ Rise Time:
 
-  欠阻尼系统上升时间 $t_{r1}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
+  Rise time of an underdamped system: $t_{r1}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
 
-  系统实际上升时间 $t_r = 0.31 \ s$<br>
+  Actual rise time: $t_r = 0.31 \ s$<br>
 
 + 峰值时间
 
