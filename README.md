@@ -296,29 +296,29 @@ Response to Step Input:<br>
 
 + Rise Time:
 
-  Rise time of an underdamped system: $t_{r1}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
+  Rise time of the underdamped system: $t_{r1}=\frac{\pi-arccos\zeta}{\omega_d} = 0.77 \ s$<br>
 
   Actual rise time: $t_r = 0.31 \ s$<br>
 
-+ 峰值时间
++ Peak Time:
 
-  欠阻尼系统峰值时间 $t_{p1} = 1.09 \ s$<br>
+  Peak time of the underdamped system: $t_{p1} = 1.09 \ s$<br>
 
-  系统实际峰值时间 $t_p = 0.74 \ s$<br>
+  Actual peak time: $t_p = 0.74 \ s$<br>
 
-+ 超调量
++ Overshoot:
 
-  欠阻尼系统超调量 $\sigma_1 \\% = \mathrm{e}^{-\pi \zeta / \sqrt{1-\zeta^2}} \times 100 \\% = 8.7 \\%$<br>
+  Overshoot of the underdamped system: $\sigma_1 \\% = \mathrm{e}^{-\pi \zeta / \sqrt{1-\zeta^2}} \times 100 \\% = 8.7 \\%$<br>
 
-  系统实际超调量 $\sigma \\%= 18 \\%$<br>
+  ACtual overshoot $\sigma \\%= 18 \\%$<br>
 
-+ 调节时间
++ Settling Time:
 
-  欠阻尼系统调节时间 $t_{s1} = \frac{3.5}{\zeta \omega_n} = 1.55 \ s$<br>
+  Settling time of the underdamped system: $t_{s1} = \frac{3.5}{\zeta \omega_n} = 1.55 \ s$<br>
 
-  系统实际调节时间 $t_s = 2.45 \ s$<br>
+  Actual settling time: $t_s = 2.45 \ s$<br>
 
-（2）稳态性能指标<br>
+（2）Steady-State Performance Indicators<br>
 
-开环系统在坐标原点有一个极点， 所以系统属 I 型系统，因而系统可以无误差跟踪阶跃信号
+The open-loop system has a pole at the origin, categorizing it as a Type I system, which allows it to track a step input with zero steady-state error
 
