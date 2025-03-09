@@ -1,6 +1,6 @@
-%% 建模
+%% Modeling
 
-% 典型固定翼民机参数
+% Typical parameters for a fixed-wing civil aircraft
 W = 12224;
 I_x = 1420.9; 
 I_y = 4067.5;
@@ -11,7 +11,7 @@ c = 1.74;
 b = 10.18; 
 V_co = 122;
 
-% 基础飞行参数
+% Basic flight parameters
 Ma = 0.158;                               
 C_L_star = 0.41;
 C_D_star = 0.05;
@@ -36,12 +36,12 @@ g = 9.81;
 rho = 1.225;
 gamma_star = 0;
 
-% 其它参数
+% Additional parameters
 m = W / g;
 V_star = 340 * Ma;
 q_star = rho * (V_star)^2/2;
 
-% 纵向动力学导数
+% Longitudinal dynamic derivatives
 X_V = -((C_D_V + 2 * C_D_star) * q_star * S) / (m * V_star);                                 
 X_alpha = -8.1231;                     
 X_delta_e = -C_D_delta_e * (q_star * S) / m;                                    
@@ -56,7 +56,7 @@ M_bar_dot_alpha = C_m_dot_alpha * (c / (2 * V_star)) * q_star * S * c / I_y;
 M_bar_q = C_m_q * (c / (2 * V_star)) * q_star * S * c / I_y;
 M_bar_delta_e = C_m_delta_e * (q_star * S * c) / I_y;           
 
-% 状态空间模型
+% State space model
 A = [
     X_V, X_alpha + g*cos(gamma_star), 0, -g*cos(gamma_star);
     -Z_V, -Z_alpha + (g*sin(gamma_star)/V_star), 1, -(g*sin(gamma_star)/V_star);
@@ -71,30 +71,30 @@ B = [
     0
 ];
 
-C = eye(4); % 假设输出为所有状态变量
-D = zeros(4, 1);  % 没有直接的控制输入到输出的影响
+C = eye(4); % Assume output is all state variables
+D = zeros(4, 1);  % No direct control input to output effect
 
-% 创建状态空间对象
+% Create state space object
 sys = ss(A, B, C, D);
 
-%% 模态分析
+%% Modal Analysis
 
-% 求解特征根
-eigValues = eig(A); % 系统特征根
-eta_sp = real(eigValues(1)); % 短周期模态对应的特征根实部
-eta_p = real(eigValues(3)); % 长周期模态对应的特征根实部
+% Solve for eigenvalues
+eigValues = eig(A); % System eigenvalues
+eta_sp = real(eigValues(1)); % Real part of eigenvalue corresponding to short-period mode
+eta_p = real(eigValues(3)); % Real part of eigenvalue corresponding to long-period mode
 
-% 短周期模态（取近似模型）
-omega_n_sp = sqrt(-(M_bar_alpha+M_bar_q*Z_alpha)); % 自然频率
-zeta_sp = -(M_bar_q+M_bar_dot_alpha-Z_alpha)/(2*omega_n_sp); % 阻尼比
-t_12 = -log(2)/eta_sp; % 半衰期
-N_12 = log(2)*sqrt(1-zeta_sp^2)/(2*pi*zeta_sp); % 半衰期内振荡次数
-omega_sp = omega_n_sp*sqrt(1-zeta_sp^2); % 阻尼振荡频率
-T_sp = 2*pi/omega_sp; % 周期
+% Short-period mode (using an approximate model)
+omega_n_sp = sqrt(-(M_bar_alpha+M_bar_q*Z_alpha)); % Natural frequency
+zeta_sp = -(M_bar_q+M_bar_dot_alpha-Z_alpha)/(2*omega_n_sp); % Damping ratio
+t_12 = -log(2)/eta_sp; % Half-life
+N_12 = log(2)*sqrt(1-zeta_sp^2)/(2*pi*zeta_sp); % Oscillations within half-life
+omega_sp = omega_n_sp*sqrt(1-zeta_sp^2); % Damped oscillation frequency
+T_sp = 2*pi/omega_sp; % Period
 
-% 长周期模态
-omega_p = imag(eigValues(3)); % 阻尼振荡频率
-T_p = 2*pi/omega_p; % 周期
-omega_n_p = sqrt(eta_p^2+omega_p^2); % 自然频率
-zeta_p = -eta_p/omega_n_p; % 阻尼比
-t_2 = -log(2)/eta_p; % 倍幅时
+% Long-period mode
+omega_p = imag(eigValues(3)); % Damped oscillation frequency
+T_p = 2*pi/omega_p; % Period
+omega_n_p = sqrt(eta_p^2+omega_p^2); % Natural frequency
+zeta_p = -eta_p/omega_n_p; % Damping ratio
+t_2 = -log(2)/eta_p; % Doubling time
