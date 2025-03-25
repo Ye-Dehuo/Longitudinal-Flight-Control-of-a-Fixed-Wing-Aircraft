@@ -87,14 +87,15 @@ eta_p = real(eigValues(3)); % Real part of eigenvalue corresponding to long-peri
 % Short-period mode (using an approximate model)
 omega_n_sp = sqrt(-(M_bar_alpha+M_bar_q*Z_alpha)); % Natural frequency
 zeta_sp = -(M_bar_q+M_bar_dot_alpha-Z_alpha)/(2*omega_n_sp); % Damping ratio
-t_12 = -log(2)/eta_sp; % Half-life
-N_12 = log(2)*sqrt(1-zeta_sp^2)/(2*pi*zeta_sp); % Oscillations within half-life
 omega_sp = omega_n_sp*sqrt(1-zeta_sp^2); % Damped oscillation frequency
 T_sp = 2*pi/omega_sp; % Period
+t_12_sp = -log(2)/eta_sp; % Half-life
+N_12_sp = log(2)*sqrt(1-zeta_sp^2)/(2*pi*zeta_sp); % Oscillations within half-life
 
 % Long-period mode
 omega_p = imag(eigValues(3)); % Damped oscillation frequency
-T_p = 2*pi/omega_p; % Period
 omega_n_p = sqrt(eta_p^2+omega_p^2); % Natural frequency
 zeta_p = -eta_p/omega_n_p; % Damping ratio
-t_2 = -log(2)/eta_p; % Doubling time
+T_p = 2*pi/omega_p; % Period
+t_12_p = -log(2)/eta_p; % Half-life
+N_12_p = log(2)*sqrt(1-zeta_p^2)/(2*pi*zeta_p); % Oscillations within half-life
