@@ -87,7 +87,7 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Damping ratio: $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
 
-+ Half decay time: $t_{1 / 2}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
++ Half decay time: $t_{1 / 2, sp}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
 
 + Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
 
@@ -105,7 +105,7 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Damping ratio: $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
 
-+ Half decay time: $t_{2}=-\frac{\ln 2}{\eta_p} = 40.6338$
++ Half decay time: $t_{1 / 2, p}=-\frac{\ln 2}{\eta_p} = 40.6338$
 
 ### Flight Quality Analysis
 
