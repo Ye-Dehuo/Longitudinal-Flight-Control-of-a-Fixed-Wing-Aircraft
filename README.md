@@ -77,7 +77,7 @@ $\bar{M}_ q=C_{m q}\left(\frac{c}{2 V*}\right) \frac{q* S c}{I_y}$<br>
 
 $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
-## 2. Modal and Flight Quality Analysis
+## 2. Inherent Modal and Flight Quality Analysis
 
 ### Modal Analysis
 
