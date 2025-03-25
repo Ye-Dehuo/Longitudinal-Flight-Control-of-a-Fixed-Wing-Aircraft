@@ -87,11 +87,11 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Damping ratio: $\zeta_{\mathrm{sp}}=-\frac{\bar{M}_ q+\bar{M}_ {\dot{\alpha}}-Z_\alpha}{2 \omega_{\mathrm{n} . \mathrm{sp}}} = 0.6954$<br>
 
++ Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$<br>
+
 + Half decay time: $t_{1 / 2, sp}=-\frac{\ln 2}{\eta_{sp}} = 0.275$<br>
 
-+ Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
-
-+ Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
++ Oscillation cycles in half decay period: $N_{1 / 2, sp}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$
 
 #### 2. Phugoid Mode
 
@@ -101,7 +101,9 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
 
-+ Half decay time: $t_{1 / 2, p}=-\frac{\ln 2}{\eta_p} = 40.6338$
++ Half decay time: $t_{1 / 2, p}=-\frac{\ln 2}{\eta_p} = 40.6338$<br>
+
++ Oscillation cycles in half decay period: $N_{1 / 2, p}=\frac{\ln 2 \sqrt{1-\xi^2_{p}}}{2 \pi \xi_{p}} = 1.379$
 
 ### Flight Quality Analysis
 
