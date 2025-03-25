@@ -91,19 +91,15 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Oscillation cycles in half decay period: $N_{1 / 2}=\frac{\ln 2 \sqrt{1-\xi^2_{sp}}}{2 \pi \xi_{sp}} = 0.114$<br>
 
-+ Damped natural frequency: $\omega_{sp} = \omega_{n, \ sp}\sqrt{1-{\xi^2_{sp}}} = 2.597$<br>
-
 + Period: $T_{sp} = \frac{2\pi}{\omega_{n, \ sp}} = 2.4194$
 
 #### 2. Phugoid Mode
 
-+ Damped natural frequency: $\omega_{p} = Im(\lambda) = 0.213$<br>
-
-+ Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
-
 + Natural frequency: $\omega_{\mathrm{n} , \ \mathrm{p}}= \sqrt{\eta^2_p + \omega_p^2} = 0.2137$<br>
 
 + Damping ratio: $\zeta_{\mathrm{p}}= \frac{-\eta_p}{w_n, \ p} = 0.0798$<br>
+
++ Period: $T_p = \frac{2\pi}{\omega_{n, \ p}} = 29.4923$<br>
 
 + Half decay time: $t_{1 / 2, p}=-\frac{\ln 2}{\eta_p} = 40.6338$
 
