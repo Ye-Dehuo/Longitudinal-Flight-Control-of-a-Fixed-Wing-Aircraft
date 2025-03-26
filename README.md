@@ -244,7 +244,7 @@ The Control Anticipation Parameter ($CAP$) is calculated as:<br>
 
 $CAP = \frac{\omega_{\mathrm{n}, \mathrm{sp}}^2}{(V \star / g) Z_\alpha} = 1.21$<br>
 
-This study primarily focuses on the control during the cruising phase of the aircraft, which is categorized under Type B flight phase. The short-period handling quality requirements for this phase are illustrated in the figure below:<br>
+This study primarily focuses on the control during the cruising phase of the aircraft, which is categorized under Type B flight phase. The short-period flight quality requirements for this phase are illustrated in the figure below:<br>
 
 ![alt](/img/CAP_CATB.jpg)
 
