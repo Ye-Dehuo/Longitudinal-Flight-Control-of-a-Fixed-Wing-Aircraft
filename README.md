@@ -79,7 +79,7 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 ## 2. Inherent Modal and Flight Quality Analysis
 
-### Modal Analysis
+### Inherent Modal Analysis
 
 #### 1. Short-Period Mode (Approximate Model)
 
@@ -105,7 +105,7 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 + Oscillation cycles in half decay period: $N_{1 / 2, p}=\frac{\ln 2 \sqrt{1-\xi^2_{p}}}{2 \pi \xi_{p}} = 1.379$
 
-### Flight Quality Analysis
+### Inherent Flight Quality Analysis
 
 #### 1. Short-Period Mode
 
@@ -115,7 +115,7 @@ The damping ratio for the short-period mode meets the requirements
 
 #### 2. Phugoid Mode
 
-(1) Damping Ratio:<br>
+Damping Ratio:<br>
 
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
