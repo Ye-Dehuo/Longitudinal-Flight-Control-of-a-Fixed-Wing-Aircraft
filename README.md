@@ -107,6 +107,8 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 ### Inherent Flight Quality Analysis
 
+The inherent flight quality mainly focuses on the damping ratio of short-period and phugoid modes
+
 #### 1. Short-Period Mode
 
  $0.35 < \zeta_{\mathrm{sp}} = 0.6954 < 1.3$<br>
@@ -114,8 +116,6 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 The damping ratio for the short-period mode meets the requirements
 
 #### 2. Phugoid Mode
-
-Damping Ratio:<br>
 
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
