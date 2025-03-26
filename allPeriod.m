@@ -1,3 +1,7 @@
+clc
+clear all
+close all
+
 %% Modeling
 
 % Typical parameters for a fixed-wing civil aircraft
@@ -92,7 +96,7 @@ T_sp = 2*pi/omega_sp; % Period
 t_12_sp = -log(2)/eta_sp; % Half-life
 N_12_sp = log(2)*sqrt(1-zeta_sp^2)/(2*pi*zeta_sp); % Oscillations within half-life
 
-% Long-period mode
+% Phugoid mode
 omega_p = imag(eigValues(3)); % Damped oscillation frequency
 omega_n_p = sqrt(eta_p^2+omega_p^2); % Natural frequency
 zeta_p = -eta_p/omega_n_p; % Damping ratio
