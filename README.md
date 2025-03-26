@@ -228,7 +228,7 @@ Bode plots are shown below:<br>
 
 ![alt](/img/bode.jpg)
 
-The gain margin is $24.8 dB$, and the phase margin is $87.5°$
+The gain margin is $27.9 dB$, and the phase margin is $87.5°$
 
 ### Flight Quality Analysis
 
