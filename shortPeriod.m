@@ -108,9 +108,10 @@ figure('Name','Bode Plot')
 bode(sys_ol);
 
 % Gain and phase margins
-[Gm,Pm,Wgm,Wpm] = margin(sys_ol); 
+[Gm,Pm,Wgm,Wpm] = margin(sys_ol); % The gain margin Gm is an absolute magnitude. You can convert the gain margin in dB
+Gm_dB = 20*log10(Gm);
 
-%% Handling Quality Analysis
+%% Flight Quality Analysis
 
 sys_cl = tf([45.0270  192.6390  206.1238   58.5118], [1.0000   16.0268   80.1376  225.8221  218.1541   58.5412]); % Closed-loop transfer function
 
