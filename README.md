@@ -119,7 +119,9 @@ The damping ratio for the short-period mode meets the requirements
 
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
-The damping ratio for the long-period mode satisfies the requirements 
+The damping ratio for the long-period mode satisfies the requirements<br>
+
+From above analysis, it can be concluded that the aircraft's inherent modal are well-designed, with good ability to resist disturbances and maintain balance. Next, a control system will be designed for the aircraft to achieve the desired longitudinal  flight objective via the control input
 
 ## 3. $C^*$ Control Law Design
 
