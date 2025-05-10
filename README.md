@@ -190,7 +190,7 @@ The output $\Delta C^*$ of the control system is shown below:<br>
 
 ### Root Locus Analysis
 
-Ignoring the feedforward compensator $K_{ff}$ temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
+Ignoring the feedforward compensator $K_{ff}$ temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04, K_a = 0.35$<br>
 
 The open-loop transfer function of the system is:<br>
 
