@@ -234,13 +234,13 @@ The gain margin is $27.9 dB$, and the phase margin is $87.5°$
 
 ### Flight Quality Analysis
 
-(1) $CAP$ Index
+(1) $\zeta_{sp}$ and $CAP$ Index
 
 With $K_a = 0.35, K_{ff} = 0.03$, the closed-loop transfer function is determined to be:<br>
 
 $G_{cl}(s) = \frac{45.03s^3 + 192.6s^2 + 206.1s + 58.51}{s^5 + 16.03s^4 + 80.14s^3 + 225.8s^2 + 218.2s + 58.54}$<br>
 
-This results in a natural frequency for the short-period mode of $\omega_{n, sp} = 3.67$ and a damping ratio of $\zeta_{n, sp} = 0.61$<br>
+This results in a natural frequency for the short-period mode of $\omega_{n, sp} = 3.67$ and a damping ratio of $\zeta_{sp} = 0.61$<br>
 
 The Control Anticipation Parameter ($CAP$) is calculated as:<br>
 
@@ -250,7 +250,7 @@ This study primarily focuses on the control during the cruising phase of the air
 
 ![alt](/img/CAP_CATB.jpg)
 
-It can be observed that the aircraft meets Level 1 flight quality requirements during the cruising phase<br>
+It can be observed that the aircraft meets Level 1 flight quality requirements during the cruising phase (Moreover, the designed control system can also meet Level 1 flight quality under Type C flight phase)<br>
 
 (2) $C^*$ Index
 
