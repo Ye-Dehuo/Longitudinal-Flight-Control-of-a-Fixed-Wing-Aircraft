@@ -190,7 +190,7 @@ The output $\Delta C^*$ of the control system is shown below:<br>
 
 ### Root Locus Analysis
 
-Ignoring the feedforward compensator $K_{ff}$ temporarily, consider $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04, K_a = 0.35$<br>
+Since feedforward compensator $K_{ff}​$ does not affect closed-loop poles, it is temporarily neglected for root locus analysis, considering $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04​$<br>
 
 The open-loop transfer function of the system is:<br>
 
@@ -220,23 +220,25 @@ From the root locus diagram, it can be seen that when $0 < K^* < 12.5$, the root
 
 ### Stability Margin Analysis
 
+Considering $K_a = 0.35, K_{ff} = 0.03$<br>
+
+$G_{ol}(s) = \frac{45.027(s+1) (s+0.4613) (s+2.817)}{(s+9.925) (s+0.9876) (s^2 + 5.113s + 14.01)}$<br>
+
 Nyquist plots are shown below:<br>
 
 ![alt](/img/nyquist.jpg)
-
-![alt](/img/nyquist2.jpg)
 
 Bode plots are shown below:<br>
 
 ![alt](/img/bode.jpg)
 
-The gain margin is $27.9 dB$, and the phase margin is $87.5°$
+The gain margin is $\inf$, and the phase margin is $105.1°$
 
 ### Flight Quality Analysis
 
 (1) $\zeta_{sp}$ and $CAP$ Index
 
-With $K_a = 0.35, K_{ff} = 0.03$, the closed-loop transfer function is determined to be:<br>
+The closed-loop transfer function is determined to be:<br>
 
 $G_{cl}(s) = \frac{45.03s^3 + 192.6s^2 + 206.1s + 58.51}{s^5 + 16.03s^4 + 80.14s^3 + 225.8s^2 + 218.2s + 58.54}$<br>
 

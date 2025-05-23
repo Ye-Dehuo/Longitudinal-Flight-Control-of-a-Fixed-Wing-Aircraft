@@ -91,7 +91,7 @@ K_a = 0.35; % Amplifier parameter
 K_G_star = K_a * 1.4836; % Forward path root locus gain
 K_H_star = 1; % Feedback path root locus gain
 K_star = K_G_star * K_H_star; % Root locus gain
-sys_ol = K_star * tf(num, den); % Open-loop transfer function
+sys_ol_for_rlocus = K_star * tf(num, den); % Open-loop transfer function
 
 % Plot root locus
 figure('Name','Root locus')
@@ -99,6 +99,8 @@ rlocus(tf(num, den));
 
 %% Stability Margin Analysis
 
+% Construct open-loop transfer function (with feedforward compensation)
+sys_ol = zpk([-1, -0.4613, -2.817], [0, -9.925, -0.9876, -2.5565 + 2.7339i, -2.5565 - 2.7339i], 45.027);
 % Plot Nyquist plot
 figure('Name','Nyquist Plot')
 nyquist(sys_ol);
