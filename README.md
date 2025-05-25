@@ -117,7 +117,7 @@ The damping ratio for the short-period mode meets the requirements<br>
 
 The flight quality index studied in this project, namely the $CAP$ and $C^*$ index, are specifically focused on the short-period mode<br>
 
-A servo actuator is integrated into the aircraft to establish a closed-loop system ( the short-period model used here will be introduced in Section 5)<br>
+A servo actuator is integrated into the aircraft to establish a closed-loop system ( the short-period model used here will be introduced in Section 5 )<br>
 
 ![alt](/img/shortPeriodWithoutControlSimulink.jpg)
 
