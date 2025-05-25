@@ -107,23 +107,41 @@ $\bar{M}_ {\delta_{\mathrm{e}}}=C_{m \delta_e} \frac{q* S c}{I_y} $
 
 ### Inherent Flight Quality Analysis
 
-The inherent flight quality mainly focuses on the damping ratio of short-period and phugoid modes
-
 #### 1. Short-Period Mode
+
+Firstly, perform a damping ratio analysis for the short-period mode<br>
 
  $0.35 < \zeta_{\mathrm{sp}} = 0.6954 < 1.3$<br>
 
-The damping ratio for the short-period mode meets the requirements
+The damping ratio for the short-period mode meets the requirements<br>
+
+The flight quality index studied in this project, namely the $CAP$ and $C^*$ index, are specifically focused on the short-period mode<br>
+
+A servo actuator is integrated into the aircraft to establish a closed-loop system ( the short-period model used here will be introduced in Section 5)<br>
+
+![alt](/img/shortPeriodWithoutControlSimulink.jpg)
+
+It can be obtained through calculation ( can be made using the index calculation formulas provided in Section 4 ) that $\zeta_{\mathrm{sp}} (0.1566)$, $CAP (136.2)$, $C^*$ index is significantly poor, and the actuator output oscillates<br>
+
+![alt](/img/C_star_index_without_control.jpg)
+
+![alt](/img/Delta_delta_e_without_control.jpg)
 
 #### 2. Phugoid Mode
+
+For the phugoid  mode, the analysis mainly focuses on the damping ratio<br>
 
 $\zeta_p = 0.0798 \ge 0.04$<br>
 
 The damping ratio for the long-period mode satisfies the requirements<br>
 
-From above analysis, it can be concluded that the aircraft's inherent modal are well-designed, with good ability to resist disturbances and maintain balance. Next, a control system will be designed for the aircraft to achieve the desired longitudinal  flight objective via the control input
+## 3. The Research Objective
 
-## 3. $C^*$ Control Law Design
+From above analysis, it can be concluded that the aircraft's inherent modal are well-designed, with good ability to resist disturbances and maintain balance. However, the $\zeta_{\mathrm{sp}}$, $CAP$, $C^*$ index and actuator output of the short-period mode is very poor and needs to be improved through the control system<br>
+
+Therefore, a control system will be designed specifically for the short-period mode to not only further optimize the $CAP$ index but also greatly improve the $C^*$ index, thereby enabling the aircraft to achieve excellent longitudinal flying qualities through the designed control system
+
+## 4. $C^*$ Control Law Design
 
 $C^* = n_n+\frac{V_{\mathrm{co}}}{g} q$<br>
 
@@ -133,7 +151,7 @@ The control law is designed for the error in $\Delta C^*$, the error is represen
 
 $e(t) = \Delta C^{**} - \Delta C^*$<br>
 
-where $\Delta C^{**}$  is the desired value of $\Delta C^*$ <br>
+where $\Delta C^{**}​$  is the desired value of $\Delta C^*​$ <br>
 
 PI control will be applied to the design of the $C^*$ control law, in a form similar to the following:<br>
 
@@ -143,11 +161,11 @@ The actuator model is defined as:<br>
 
 $G_\delta(s) = \frac{-1}{0.1s+1}$
 
-## 4. Control System Design and Analysis
+## 5. Control System Design and Analysis
 
 ### Control System Design
 
-The control of the $C^*$ metric typically needs to be accomplished within a short period, hence the dynamics model is simplified to the short-period model, focusing on elevator control for aircraft:<br>
+The dynamics model is simplified to the short-period model, focusing on elevator control for aircraft:<br>
 ```math
 \left[\begin{array}{c}\Delta \dot{\alpha} \\ \Delta \dot{q}\end{array}\right]=\left[\begin{array}{cc}-Z_\alpha & 1 \\ \bar{M}_\alpha-\bar{M}_{\dot{\alpha}} Z_\alpha & \bar{M}_q+ \bar{M}_{\dot{\alpha}}\end{array}\right]\left[\begin{array}{c}\Delta \alpha \\ \Delta q\end{array}\right] + \left[\begin{array}{c}-Z_{\delta_e} \\ \bar{M}_{\delta_e}-\bar{M}_{\dot{\alpha}} Z_{\delta_e}\end{array}\right] \Delta \delta_e 
 ```
@@ -184,13 +202,23 @@ The output $\Delta C^*$ of the control system is shown below:<br>
 
 ![alt](/img/Delta_C_star.jpg)
 
- $\Delta q$ is depicted in the following graph:
+The $C^*$ index converges stably to the input value<br>
+
+$\Delta q$ is depicted in the following graph:<br>
 
 ![alt](/img/Delta_q.jpg)
 
+The $\Delta q$ converges stably to $3.1^\circ/s$
+
+$\Delta \delta_e$ is depicted in the following graph:<br>
+
+![alt](/img/Delta_delta_e.jpg)
+
+$\Delta \delta_e$ converges stably to $-1.8^\circ$
+
 ### Root Locus Analysis
 
-Since feedforward compensator $K_{ff}​$ does not affect closed-loop poles, it is temporarily neglected for root locus analysis, considering $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04​$<br>
+Since feedforward compensator $K_{ff}$ does not affect closed-loop poles, it is temporarily neglected for root locus analysis, considering $K_{n1} = 0.05, K_{q1} = 0.01, K_P = 0.001, K_I = 0.04$<br>
 
 The open-loop transfer function of the system is:<br>
 
@@ -222,7 +250,7 @@ From the root locus diagram, it can be seen that when $0 < K^* < 12.5$, the root
 
 Considering $K_a = 0.35, K_{ff} = 0.03$<br>
 
-$G_{ol}(s) = \frac{45.027(s+1) (s+0.4613) (s+2.817)}{(s+9.925) (s+0.9876) (s^2 + 5.113s + 14.01)}$<br>
+$G_{ol}(s) = \frac{45.027(s+1) (s+0.4613) (s+2.817)}{(s+9.925) (s+0.9876) (s^2 + 5.113s + 14.01)}​$<br>
 
 Nyquist plots are shown below:<br>
 
@@ -236,7 +264,7 @@ The gain margin is $\inf$, and the phase margin is $105.1°$
 
 ### Flight Quality Analysis
 
-(1) $\zeta_{sp}$ and $CAP$ Index
+#### 1.  $\zeta_{sp}$ and $CAP$ Index
 
 The closed-loop transfer function is determined to be:<br>
 
@@ -254,7 +282,7 @@ This study primarily focuses on the control during the cruising phase of the air
 
 It can be observed that the aircraft meets Level 1 flight quality requirements during the cruising phase (Moreover, the designed control system can also meet Level 1 flight quality under Type C flight phase)<br>
 
-(2) $C^*$ Index
+#### 2.  $C^*$ Index
 
 When the input is $1g$, the $C^*$ index is depicted in the following figure, demonstrating that the aircraft meets the envelope constraints:<br>
 
@@ -262,7 +290,7 @@ When the input is $1g$, the $C^*$ index is depicted in the following figure, dem
 
 ### Time-Domain Characteristics Analysis
 
-（1）Dynamic Performance Indicators<br>
+#### 1. Dynamic Performance Indicators<br>
 
 The closed-loop poles are shown in the following figure:<br>
 
@@ -320,7 +348,7 @@ Response to Step Input:<br>
 
   Actual settling time: $t_s = 2.45 \ s$<br>
 
-（2）Steady-State Performance Indicators<br>
+#### 2. Steady-State Performance Indicators<br>
 
 The open-loop system has a pole at the origin, categorizing it as a Type I system, which allows it to track a step input with zero steady-state error
 

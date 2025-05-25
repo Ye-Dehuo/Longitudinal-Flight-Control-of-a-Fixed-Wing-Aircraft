@@ -44,6 +44,7 @@ gamma_star = 0;
 m = W / g;
 V_star = 340 * Ma;
 q_star = rho * (V_star)^2/2;
+C_star_ss = 2;
 
 % Longitudinal dynamic derivatives
 X_V = -((C_D_V + 2 * C_D_star) * q_star * S) / (m * V_star);                                 
@@ -81,7 +82,9 @@ D = zeros(4, 1);  % No direct control input to output effect
 % Create state space object
 sys = ss(A, B, C, D);
 
-%% Modal Analysis
+%% Inherent Modal and Flight Quality Analysis
+
+% Inherent Modal Analysis
 
 % Solve for eigenvalues
 eigValues = eig(A); % System eigenvalues
@@ -103,3 +106,21 @@ zeta_p = -eta_p/omega_n_p; % Damping ratio
 T_p = 2*pi/omega_p; % Period
 t_12_p = -log(2)/eta_p; % Half-life
 N_12_p = log(2)*sqrt(1-zeta_p^2)/(2*pi*zeta_p); % Oscillations within half-life
+
+% Inherent Flight Quality Analysis
+
+% Short-period mode (using an approximate model)
+sys_cl = zpk(-2.817, [-2.85, -6.09+38.4046i, -6.09-38.4046i], 1483.6);
+[Wn, Zeta, Pole] = damp(sys_cl_for_inhertnt); % Closed-loop system frequency, damping ratio, poles
+omega_n = Wn(3); % Underdamped system natural frequency (short-period mode natural frequency)
+zeta = Zeta(3); % Underdamped system damping ratio (short-period mode damping ratio)
+CAP = omega_n ^2 / ((V_star / g) * Z_alpha); % Control Anticipation Parameter
+
+sim('shortPeriodSimulink');% Plot C* index graph
+C_star_0 = ones(size(t));
+C_star_index = (Delta_C_star_without_control + C_star_0) / C_star_ss;
+figure('name','C* Index without Control')
+plot(t, C_star_index, t, upperBound, t, lowerBound);
+xlabel('$t/\mathrm{s}$','interpreter','latex');
+ylabel('$C^*/C^*_\infty$','interpreter','latex');
+grid on;
