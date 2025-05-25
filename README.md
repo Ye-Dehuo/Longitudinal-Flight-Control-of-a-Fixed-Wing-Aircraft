@@ -1,5 +1,6 @@
 # Longitudinal Flight Control of a Fixed-Wing Aircraft
 ## Overview
++ In this research, a dynamic model is established for a representative general-purpose fixed-wing aircraft based on flight performance parameters and fundamental aerodynamic parameters. The aircraft's inherent modes and flying qualities are analyzed to understand its characteristics and identify its limitations. A control system based on the C* index is designed for the aircraft, with subsequent performance analysis conducted to complete the control system and improve overall flight performance<br>
 + Aircraft mode and flight quality analysis are primarily based on the full-period dynamic model, with the source code available in `allPeriod.m` <br><br>
 + Flight control, root locus, stability margins, handling quality, and time-domain characteristics analysis are mainly based on the short-period model, with the source code available in `shortPeriod.m` and the Simulink model in `shortPeriodSimulink.slx`
 ## 1. Modeling
