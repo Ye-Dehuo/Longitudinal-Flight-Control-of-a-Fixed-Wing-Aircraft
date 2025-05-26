@@ -215,7 +215,7 @@ $\Delta q$ is depicted in the following graph:<br>
 
 The $\Delta q$ converges stably to $3.1^\circ/s$
 
-$\Delta \delta_e$ is depicted in the following graph:<br>
+$\Delta \delta_e​$ is depicted in the following graph:<br>
 
 ![alt](/img/Delta_delta_e.jpg)
 
@@ -289,9 +289,15 @@ It can be observed that the aircraft meets Level 1 flight quality requirements d
 
 #### 2.  $C^*$ Index
 
-When the input is $1g$, the $C^*$ index is depicted in the following figure, demonstrating that the aircraft meets the envelope constraints:<br>
+$C^* = C^*(0) + \Delta C^*$ <br>
+
+Here, $C^*(0)$ represents the initial value of $C^*$ index and $C^*(0) = 1$ because the aircraft is in steady level flight <br>
+
+When the input is $1g$, the $C^*$ index is depicted in the following figure:<br>
 
 ![alt](/img/C_star_index.jpg)
+
+Here, $C^*_\infty = C^*(0) + \Delta C^{**} = 1 + 1 = 2$. This figure demonstrates that the $C^*$ index of the aircraft meets the envelope constraints
 
 ### Time-Domain Characteristics Analysis
 
